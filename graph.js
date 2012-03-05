@@ -1,4 +1,4 @@
-function(w) {
+(function(w) {
     var colors = ["#252525", "#FA9715", "#29AAE1", "#542437", "#53777A"];
 
     // ARRAY
