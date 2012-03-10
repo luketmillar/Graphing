@@ -115,4 +115,45 @@
         }
         return graph;
     };
+    
+    // creates a canvas drawing a percentage graph
+    // options
+    //    - value: percentage value to draw
+    //    - color: color of the percent filled in (default to #29AAE1)
+    //    - height: height of the graph (default to 70)
+    //    - width: width of the graph (default to 300)
+    // examples
+    //    graph.bar({value: 78});
+    graph.percentage = function(options) {
+        // Initialize options.
+        var value = options.value;
+        var graphHeight = options.height || 60;
+        var graphWidth = options.width || 300;
+        var barColor = options.color || colors[2];
+        
+        // Calculate graphing variables.
+        var filledInWidth = Math.floor(graphWidth * (value / 100));
+        var grayedOutWidth = graphWidth - filledInWidth;
+
+        // Create the canvas.
+        var graph = document.createElement('canvas');
+        graph.height = graphHeight;
+        graph.width = graphWidth;
+        var ctx = graph.getContext('2d');
+
+        // Draw the blue bar.
+        ctx.fillStyle = barColor;
+        ctx.fillRect(0, 0, filledInWidth, graphHeight);
+
+        ctx.fillStyle = '#555';
+        ctx.fillRect(filledInWidth, 0, grayedOutWidth, graphHeight);
+        
+        // Draw the text.
+        ctx.font = "20pt Helvetica";
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillText(value + '%', filledInWidth - 10, graphHeight / 2);
+        return graph;
+    };
 })(window);
