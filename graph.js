@@ -145,7 +145,7 @@
         ctx.fillStyle = barColor;
         ctx.fillRect(0, 0, filledInWidth, graphHeight);
 
-        ctx.fillStyle = '#555';
+        ctx.fillStyle = colors[0];
         ctx.fillRect(filledInWidth, 0, grayedOutWidth, graphHeight);
         
         // Draw the text.
